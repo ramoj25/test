@@ -1,0 +1,40 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        }
+       
+    },
+    "variables": {
+                  },
+    "resources": [
+        {
+            "name": "[concat(parameters('vmName'),'/CustomScriptExtension')]",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2015-06-15",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.9",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": [
+                                "https://stwvdinstalleu.blob.core.windows.net/cmagent/cmagent.zip?sp=r&st=2021-11-02T13:55:33Z&se=2021-11-03T21:55:33Z&spr=https&sv=2020-08-04&sr=b&sig=D5unSyQazrWZffv8y4NGZitehNq7%2F%2F7Jn20%2FrDLUDHE%3D",
+                                "https://stwvdinstalleu.blob.core.windows.net/cmagent/Installcmagent.ps1?sp=r&st=2021-11-02T13:56:12Z&se=2021-11-03T21:56:12Z&spr=https&sv=2020-08-04&sr=b&sig=g%2BunZ7ckDAniwA5etud7arAsRUZVmv4txcaH98pCECk%3D"
+                                
+                                     ]                                   
+                                  
+                },
+                "protectedSettings": {
+                     "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File Installcmagent.ps1"
+                }
+            }
+        }
+    ]
+}
