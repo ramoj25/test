@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Location": {
+            "value": "westeurope"
+        },
+        "NamePrefix": {
+            "value": "wvdweuqa001"
+        },
+        "NumberOfVms": {
+            "value": 1
+        },
+        "ScriptUri": {
+            "value": "https://raw.githubusercontent.com/ramoj25/test/main/script.ps1"
+        },
+        "VirtualMachineIndex": {
+            "value": 39
+        }
+    }
+}
